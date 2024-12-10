@@ -20,6 +20,7 @@ namespace SfListViewStickyFooterTest
 #if DEBUG
     		builder.Logging.AddDebug();
 #endif
+            builder.Services.AddTransient<MainViewModel>();
 
             return builder.Build();
         }

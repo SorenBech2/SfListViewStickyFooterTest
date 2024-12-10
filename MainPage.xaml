@@ -3,12 +3,13 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:SfListView="clr-namespace:Syncfusion.Maui.ListView;assembly=Syncfusion.Maui.ListView"
              xmlns:model="clr-namespace:SfListViewStickyFooterTest.Models"
+             xmlns:viewModel="clr-namespace:SfListViewStickyFooterTest"
              x:Class="SfListViewStickyFooterTest.MainPage">
 
     <Grid>
         <SfListView:SfListView
-                x:Name="ListViewTest" VerticalOptions="StartAndExpand" MaximumHeightRequest="300"  WidthRequest="355" 
-                EmptyView="Nothing to see here." IsStickyFooter="True" StickyFooterPosition="Default" >
+                x:Name="ListViewTest" ItemsSource="{Binding TestList}" VerticalOptions="Start" MaximumHeightRequest="500"  WidthRequest="355" 
+                EmptyView="Nothing to see here." IsStickyFooter="True" StickyFooterPosition="Default" FooterSize="110" >
             <SfListView:SfListView.ItemTemplate>
                 <DataTemplate x:DataType="model:ItemModel" >
                     <Grid ColumnDefinitions="50,260" >
@@ -23,9 +24,10 @@
             </SfListView:SfListView.ItemTemplate>
             <SfListView:SfListView.FooterTemplate>
                 <DataTemplate>
-                    <Label Text="Add Item" TextDecorations="Underline" HorizontalOptions="Center" HorizontalTextAlignment="Center" 
-                           Margin="0,10,0,0" WidthRequest="200" >
-                    </Label>
+                    <VerticalStackLayout>
+                        <Button Text="Add Item" HorizontalOptions="Center" Margin="0,10,0,0" WidthRequest="200" Clicked="AddButton_Clicked" />
+                        <Button Text="Delete Item" HorizontalOptions="Center" Margin="0,10,0,0" WidthRequest="200" Clicked="DeleteButton_Clicked" />
+                    </VerticalStackLayout>
                 </DataTemplate>
             </SfListView:SfListView.FooterTemplate>
         </SfListView:SfListView>
